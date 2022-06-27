@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: insta-auth
+  main:
+    allow-circular-references: true
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          configuration:
+            key:
+              serializer: org.apache.kafka.common.serialization.StringSerializer
+      bindings:
+        momentsUserChanged:
+          destination: moments.user.changed
+          contentType: application/json
+
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
